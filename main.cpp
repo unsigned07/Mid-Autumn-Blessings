@@ -1,26 +1,26 @@
 #include <stdio.h>
-#include <graphics.h>//Í¼ĞÎ½çÃæÍ·ÎÄ¼ş
-#include <math.h>	//ÊıÑ§Í·ÎÄ¼ş
+#include <graphics.h>//å›¾å½¢ç•Œé¢å¤´æ–‡ä»¶
+#include <math.h>	//æ•°å­¦å¤´æ–‡ä»¶
 #include <time.h>
 #include <conio.h>
-#include <mmsystem.h>//Ã½ÌåÍ·ÎÄ¼ş
-#pragma comment (lib,"winmm.lib")//Ã½Ìå¿âÎÄ¼ş
+#include <mmsystem.h>//åª’ä½“å¤´æ–‡ä»¶
+#pragma comment (lib,"winmm.lib")//åª’ä½“åº“æ–‡ä»¶
 
 #define PI 3.1415926548
-//ÔÂ±ı½á¹¹Ìå
+//æœˆé¥¼ç»“æ„ä½“
 struct GET
 {
-	int x, y;//×ø±ê
-	int mx, my;//×îµÍµã
+	int x, y;//åæ ‡
+	int mx, my;//æœ€ä½ç‚¹
 	int height;
 	bool down;
-	DWORD t1, t2, dt;//¿ØÖÆ½µÂäËÙ¶È
-	IMAGE img[1];//ÔÂ±ıÍ¼Æ¬
-	byte n : 1;// Î»¶Î
+	DWORD t1, t2, dt;//æ§åˆ¶é™è½é€Ÿåº¦
+	IMAGE img[1];//æœˆé¥¼å›¾ç‰‡
+	byte n : 1;// ä½æ®µ
 }get [4];
-//»¶Ó­½çÃæ
+//æ¬¢è¿ç•Œé¢
 void Welcome();
-//³õÊ¼»¯º¯Êı
+//åˆå§‹åŒ–å‡½æ•°
 void Init(int i);
 void Loadpic();
 void choose(DWORD& t1);
@@ -28,18 +28,18 @@ void down();
 int main()
 {
 
-	//³õÊ¼»¯´°¿Ú
+	//åˆå§‹åŒ–çª—å£
 	initgraph(900, 600);
 	srand((unsigned int)time(NULL));
-	DWORD t1 = timeGetTime();//Ñ¡ÔñÔÂ±ıÊ±¼ä
+	DWORD t1 = timeGetTime();//é€‰æ‹©æœˆé¥¼æ—¶é—´
 
 
-	//ÒôÀÖ
+	//éŸ³ä¹
 	mciSendString(TEXT("open ./mid/mid.mp3 alias music"), 0, 0, 0);
 	mciSendString(L"play music", 0, 0, 0);
 
 
-	//µ÷ÓÃ»¶Ó­½çÃæº¯Êı
+	//è°ƒç”¨æ¬¢è¿ç•Œé¢å‡½æ•°
 	//Welcome();
 	for (int  i = 0; i < 4; i++)
 	{
@@ -58,7 +58,7 @@ int main()
 	while (true);
 	return 0;
 }
-//»¶Ó­½çÃæ
+//æ¬¢è¿ç•Œé¢
 void Welcome()
 {
 
@@ -68,44 +68,44 @@ void Welcome()
 	int x, y;
 	for (int i = 0; i < 50; i++)
 	{
-		cleardevice();//ÇåÆÁ
+		cleardevice();//æ¸…å±
 		x = 400 + (180 * sin(PI * 2 * i / 60));
 		y = 200 + (180 * cos(PI * 2 * i / 60));
-		settextstyle(i, 0, L"ËÎÌå");
-		outtextxy(x, y, L"111");
-		outtextxy(x+100, y+60, L"11111£¡");
+		settextstyle(i, 0, L"å®‹ä½“");
+		outtextxy(x, y, L"ç¥å°éƒ­");
+		outtextxy(x+100, y+60, L"å¿«ä¹ä¸­ç§‹èŠ‚ï¼");
 		
-		//outtextxy(x+50, y+100, L"×££¡");
+		//outtextxy(x+50, y+100, L"ç¥ï¼");
 		Sleep (50);
 	}
 		getchar();
 		cleardevice();
-		settextstyle(50, 0, L"ËÎÌå");
-		outtextxy(300, 400, L"111");
-		outtextxy(400, 460, L"1111111£¡");
+		settextstyle(50, 0, L"å®‹ä½“");
+		outtextxy(300, 400, L"ç¥å°éƒ­");
+		outtextxy(400, 460, L"å¿«ä¹ä¸­ç§‹èŠ‚ï¼");
 
 
 }
 
-//³õÊ¼»¯º¯Êı
+//åˆå§‹åŒ–å‡½æ•°
 void Init(int i)
 {
-	//³õÊ¼»¯ÔÂ±ı
+	//åˆå§‹åŒ–æœˆé¥¼
 	get[i].x = 0;
 	get[i].y = 0;
 	get[i].mx = 0;
 	get[i].my = 0;
 	get[i].height = 0;
-	get[i].down = false;//ÔÂ±ı»¹Î´µôÂä
+	get[i].down = false;//æœˆé¥¼è¿˜æœªæ‰è½
 	get[i].n = 0;
-	get[i].t1 = timeGetTime();//»ñÈ¡ÏµÍ³Ê±¼ä
-	get[i].dt = 20;//Ê±¼ä²î
+	get[i].t1 = timeGetTime();//è·å–ç³»ç»Ÿæ—¶é—´
+	get[i].dt = 20;//æ—¶é—´å·®
 
 }
 
 void Loadpic()
 {
-	//¼ÓÔØÔÂ±ı
+	//åŠ è½½æœˆé¥¼
 	IMAGE getimg;
 	loadimage(&getimg, L"./mid/all.png", 160, 40);
 	SetWorkingImage(&getimg);
@@ -118,7 +118,7 @@ void Loadpic()
 	SetWorkingImage(NULL);
 
 }
-//Ñ¡ÔñÔÂ±ı
+//é€‰æ‹©æœˆé¥¼
 void choose(DWORD &t1)
 {
 	DWORD t2 = timeGetTime();
@@ -127,7 +127,7 @@ void choose(DWORD &t1)
 		int n = rand() % 20;
 		if (n < 4 && get[n].down == false)
 		{
-			//ÖØÖÃÔÂ±ıÊı¾İ
+			//é‡ç½®æœˆé¥¼æ•°æ®
 			get[n].x =rand()%860 ;
 			get[n].y =0;
 			get[n].mx = get[n].x;
@@ -139,7 +139,7 @@ void choose(DWORD &t1)
 		t1 = t2;
 	}
 }
-//µôÂäÔÂ±ı
+//æ‰è½æœˆé¥¼
 void down()
 {
 	for (int i = 0; i < 4; i++)
