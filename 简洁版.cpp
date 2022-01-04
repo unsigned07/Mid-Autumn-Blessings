@@ -1,33 +1,33 @@
-//ÎŞÂäÔÂ±ı¹¦ÄÜ
+//æ— è½æœˆé¥¼åŠŸèƒ½
 
 
 #include <stdio.h>
-#include <graphics.h>//Í¼ĞÎ½çÃæÍ·ÎÄ¼ş
-#include <math.h>	//ÊıÑ§Í·ÎÄ¼ş
+#include <graphics.h>//å›¾å½¢ç•Œé¢å¤´æ–‡ä»¶
+#include <math.h>	//æ•°å­¦å¤´æ–‡ä»¶
 #include <time.h>
-#include <mmsystem.h>//Ã½ÌåÍ·ÎÄ¼ş
-#pragma comment (lib,"winmm.lib")//Ã½Ìå¿âÎÄ¼ş
+#include <mmsystem.h>//åª’ä½“å¤´æ–‡ä»¶
+#pragma comment (lib,"winmm.lib")//åª’ä½“åº“æ–‡ä»¶
 
 #define PI 3.1415926548
-//ÔÂ±ı½á¹¹Ìå
+//æœˆé¥¼ç»“æ„ä½“
 
-//»¶Ó­½çÃæ
+//æ¬¢è¿ç•Œé¢
 void Welcome();
 int main()
 {
 
-	//³õÊ¼»¯´°¿Ú
+	//åˆå§‹åŒ–çª—å£
 	initgraph(900, 600);
 	srand((unsigned int)time(NULL));
-	DWORD t1 = timeGetTime();//Ñ¡ÔñÔÂ±ıÊ±¼ä
+	DWORD t1 = timeGetTime();//é€‰æ‹©æœˆé¥¼æ—¶é—´
 
 
-	//ÒôÀÖ
+	//éŸ³ä¹
 	mciSendString(TEXT("open ./mid/mid.mp3 alias music"), 0, 0, 0);
 	mciSendString(L"play music", 0, 0, 0);
 
 
-	//µ÷ÓÃ»¶Ó­½çÃæº¯Êı
+	//è°ƒç”¨æ¬¢è¿ç•Œé¢å‡½æ•°
 	Welcome();
 
 
@@ -35,7 +35,7 @@ int main()
 	while (true);
 	return 0;
 }
-//»¶Ó­½çÃæ
+//æ¬¢è¿ç•Œé¢
 void Welcome()
 {
 
@@ -45,14 +45,14 @@ void Welcome()
 	int x, y;
 	for (int i = 0; i < 50; i++)
 	{
-		cleardevice();//ÇåÆÁ
+		cleardevice();//æ¸…å±
 		x = 400 + (180 * sin(PI * 2 * i / 60));
 		y = 200 + (180 * cos(PI * 2 * i / 60));
-		settextstyle(i, 0, L"ËÎÌå");
-		outtextxy(x, y, L"×£Ğ¡¹ù");
-		outtextxy(x + 100, y + 60, L"¿ìÀÖÖĞÇï½Ú£¡");
+		settextstyle(i, 0, L"å®‹ä½“");
+		outtextxy(x, y, L"ç¥**");
+		outtextxy(x + 100, y + 60, L"å¿«ä¹ä¸­ç§‹èŠ‚ï¼");
 
-		//outtextxy(x+50, y+100, L"×££¡");
+		//outtextxy(x+50, y+100, L"ç¥ï¼");
 		Sleep(50);
 	}
 	getchar();
@@ -61,9 +61,9 @@ void Welcome()
 	loadimage(&img, L"./mid/mid.png", 900, 600);
 
 	putimage(0, 0, &img);
-	settextstyle(50, 0, L"ËÎÌå");
-	outtextxy(300, 400, L"×£Ğ¡¹ù");
-	outtextxy(400, 460, L"¿ìÀÖÖĞÇï½Ú£¡");
+	settextstyle(50, 0, L"å®‹ä½“");
+	outtextxy(300, 400, L"ç¥**");
+	outtextxy(400, 460, L"å¿«ä¹ä¸­ç§‹èŠ‚ï¼");
 
 
 }
