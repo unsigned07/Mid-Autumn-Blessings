@@ -72,7 +72,7 @@ void Welcome()
 		x = 400 + (180 * sin(PI * 2 * i / 60));
 		y = 200 + (180 * cos(PI * 2 * i / 60));
 		settextstyle(i, 0, L"宋体");
-		outtextxy(x, y, L"祝小郭");
+		outtextxy(x, y, L"祝**");
 		outtextxy(x+100, y+60, L"快乐中秋节！");
 		
 		//outtextxy(x+50, y+100, L"祝！");
@@ -81,7 +81,7 @@ void Welcome()
 		getchar();
 		cleardevice();
 		settextstyle(50, 0, L"宋体");
-		outtextxy(300, 400, L"祝小郭");
+		outtextxy(300, 400, L"祝**");
 		outtextxy(400, 460, L"快乐中秋节！");
 
 
